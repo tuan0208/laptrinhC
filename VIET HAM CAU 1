@@ -1,0 +1,62 @@
+#include<stdio.h>
+#define MAX 50
+void nhap_mang(int a[][MAX],int m, int n)
+{
+    for(int i=0; i<m; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            printf("Nhap a[%d][%d]: ",i,j);
+            scanf("%d",&a[i][j]);
+        }
+    }
+}
+void in_mang(int a[][MAX], int m, int n)
+{
+    for(int i=0; i<m; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            printf("%d",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+int tim_sln(int a[][MAX],int m,int n)
+{
+    int max =a[0][0];
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j=n;j++)
+        {
+            if(max<a[i][j])
+                max = a[i][j];
+        }
+    }
+    return max;
+}
+int * tim_sln_ct(int a[][MAX], int m, int n)
+{
+    int *max=&a[0][0];
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j<n;j++)
+            max =&a[i][j];
+
+    }
+    return max;
+}
+int main()
+{
+    int a[MAX][MAX];
+    int m, n;
+    printf("Nhap so hang, so cot: ");
+    scanf("%d %d",&m,&n);
+    nhap_mang(a,m,n);
+    printf("Mang 2 chieu: \n");
+    in_mang(a,m,n);
+    printf("So lon nhat cua mang :%d\n",tim_sln(a,m,n));
+    int *max =tim_sln_ct(a,m,n);
+    printf("So lon nhat cua mang dung con tro :%d\n",*max);
+    return 0;
+}
